@@ -26,7 +26,7 @@ public struct JyutBot {
                 router.unmatched = controller.fallbackHandler
 
                 while let update = bot.nextUpdateSync() {
-                        let timeInterval = update.message?.date.distance(to: .now) ?? 0
+                        let timeInterval = update.message?.date.distance(to: Date()) ?? 0
                         if timeInterval > 60 {
                                 // TODO: Replace print() with logger
                                 print("timeInterval > 60")
