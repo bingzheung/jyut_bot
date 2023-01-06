@@ -1,5 +1,8 @@
 import Foundation
+import Logging
 import TelegramBotSDK
+
+let logger: Logger = Logger(label: "io.ososo.jyutbot")
 
 @main
 public struct JyutBot {
@@ -28,8 +31,7 @@ public struct JyutBot {
                 while let update = bot.nextUpdateSync() {
                         let timeInterval = update.message?.date.distance(to: Date()) ?? 0
                         if timeInterval > 60 {
-                                // TODO: Replace print() with logger
-                                print("timeInterval > 60")
+                                logger.notice("Drop outdated message.")
                         } else {
                                 _ = try? router.process(update: update)
                         }
