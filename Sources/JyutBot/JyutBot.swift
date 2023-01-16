@@ -23,6 +23,9 @@ public struct JyutBot {
                 router["app"] = controller.app
                 router["ios"] = controller.app
                 router["ping", [.slashRequired]] = controller.ping
+                router["caa", [.slashRequired]] = controller.ping
+                router["chaa", [.slashRequired]] = controller.ping
+                router["cha", [.slashRequired]] = controller.ping
                 router.partialMatch = { context -> Bool in
                         return true
                 }
