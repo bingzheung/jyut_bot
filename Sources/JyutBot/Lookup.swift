@@ -4,7 +4,7 @@ import SQLite3
 struct Lookup {
 
         private static let database: OpaquePointer? = {
-                let path: String = "/srv/jyutbot/lookup.sqlite3"
+                let path: String = "/srv/jyutbot/jyutping.sqlite3"
                 var db: OpaquePointer?
                 if sqlite3_open_v2(path, &db, SQLITE_OPEN_READONLY, nil) == SQLITE_OK {
                         return db
@@ -78,7 +78,7 @@ struct Lookup {
 
         private static func match(for text: String) -> [String] {
                 var romanizations: [String] = []
-                let queryString = "SELECT romanization FROM lookuptable WHERE word = '\(text)';"
+                let queryString = "SELECT romanization FROM jyutpingtable WHERE word = '\(text)';"
                 var queryStatement: OpaquePointer? = nil
                 defer {
                         sqlite3_finalize(queryStatement)
